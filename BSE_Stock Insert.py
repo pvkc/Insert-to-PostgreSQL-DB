@@ -1,22 +1,30 @@
 #!/usr/bin/python
-
+# This program is written for and tested in Python 2.7.6
+# The program reads a CSV file, formats the data and store it the database
+#
+#
 import psycopg2
 import sys
 import datetime
 import calendar
 import getpass
 
+# Increase the debug level to get more 'print' from the program
 DEBUG_LEVEL = 0
+
+# Location of the Errorlog file
 LogFile="/home/pvkc/Desktop/StockMarket/BSE/Errorlog.txt"
 con=None
 
+# Function that opens the errorLog 
 def OpenErrorLog():
 	try:
 		errorFile=open(LogFile,"a");
 		return errorFile
 	except Exception,exp:
 		print exp		
-
+		
+# Function that write to the Errorfile
 def WriteErrorLog (e):
 	errorFile=OpenErrorLog()
 	if errorFile == None:
